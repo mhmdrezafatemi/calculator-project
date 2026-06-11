@@ -2,11 +2,12 @@ const display = document.getElementById('display');
 const buttons = document.getElementById('buttons');
 const history = document.querySelector('.history');
 
-let firstNum =0;
-let secondNum = 0;
+let firstNum ='';
+let secondNum = '';
 let operator = 0;
 let state = 0;
     buttons.addEventListener('click',(e) => {
+        if(!e.target.matches("button")) return;
         buttonValue = e.target.textContent;
         switch(state){
         case 0:
@@ -17,6 +18,9 @@ let state = 0;
             history.textContent += buttonValue;
             }
             else if(buttonValue === "."){
+                if(firstNum === ''){
+                    return;
+                }
                 if(!display.value.includes(".")){
                     history.textContent += buttonValue;
                     display.value += ".";
@@ -26,6 +30,9 @@ let state = 0;
                 return;
             }
             else if(!isFinite(buttonValue)){
+            if(firstNum === ''){
+                return;
+            }
             state =1;
             operator = buttonValue;
             history.textContent += buttonValue;
@@ -41,6 +48,8 @@ let state = 0;
                 history.textContent += buttonValue;
             }
             else if(buttonValue === "."){
+                if(secondNum ===''){
+                    return}
                 if(!display.value.includes(".")){
                     history.textContent += buttonValue;
                     display.value += ".";
