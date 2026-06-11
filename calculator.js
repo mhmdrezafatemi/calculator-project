@@ -9,12 +9,12 @@ let state = 0;
     buttons.addEventListener('click',(e) => {
         if(!e.target.matches("button")) return;
         buttonValue = e.target.textContent;
+        clear();
         switch(state){
         case 0:
             if(isFinite(buttonValue)){
             display.value += buttonValue;
             firstNum = display.value;
-            
             history.textContent += buttonValue;
             }
             else if(buttonValue === "."){
@@ -63,9 +63,6 @@ let state = 0;
             else if(!isFinite(buttonValue)){
                 return;
             }
-            console.log(operator); 
-            console.log(firstNum);
-            console.log(secondNum);
             break;
         }
     });
@@ -86,4 +83,11 @@ let state = 0;
         return num1 / num2;
     }
 }
+    function clear(){
+        if(buttonValue === "C"){
+            display.value ='';
+            firstNum = '';
+            history.textContent = '';
+        }
+    }
 display.value='';
