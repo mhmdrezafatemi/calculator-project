@@ -7,6 +7,7 @@ let secondNum = '';
 let result = '';
 let operator = 0;
 let state = 0;
+const maxDigit = 10;
     buttons.addEventListener('click',(e) => {
         if(!e.target.matches("button")) return;
         buttonValue = e.target.textContent;
@@ -17,10 +18,12 @@ let state = 0;
                 history.textContent = firstNum;
             }
             if(isFinite(buttonValue)){
-                console.log(result);
-            display.value += buttonValue;
-            firstNum = display.value;
-            history.textContent += buttonValue;
+                if(display.value.length > maxDigit){
+                    return;
+                }
+                display.value += buttonValue;
+                firstNum = display.value;
+                history.textContent += buttonValue;
             }
             else if(buttonValue === "."){
                 if(firstNum === ''){return;}
@@ -44,33 +47,36 @@ let state = 0;
             clear();
             console.log(state);
             if(isFinite(buttonValue)){
+                if(display.value.length > maxDigit){
+                    return;
+                }
                 display.value += buttonValue;
                 secondNum = display.value;
                 history.textContent += buttonValue;
             }
             else if(buttonValue === "."){
-                if(secondNum ===''){return;}
-                if(!display.value.includes(".")){
+                    if(!display.value.includes(".")){
                     history.textContent += buttonValue;
                     display.value += ".";
-                }
+                    }
             }
             else if(buttonValue === "="){
                 if(secondNum === ''){return;}
                 if(!history.textContent.includes("=")){
-                display.value = operate(operator,firstNum,secondNum);
-                result = display.value;
-                history.textContent += buttonValue;
-                history.textContent += display.value;
-                state = 2;
+                    display.value = operate(operator,firstNum,secondNum);
+                    result = display.value;
+                    history.textContent += buttonValue;
+                    history.textContent += display.value;
+                    console.log('moving');
+                    state = 2;
                 }
                 else if(history.textContent.includes("=")){
-                if(result === ""){return;}
-                display.value = '';
-                display.value = operate(operator,secondNum,result);
-                history.textContent = result;
-                history.textContent += display.value;
-                state = 0;
+                    if(result === ""){return;}
+                    display.value = '';
+                    display.value = operate(operator,secondNum,result);
+                    history.textContent = result;
+                    history.textContent += display.value;
+                    state = 0;
                 }
             }
             else if(!isFinite(buttonValue)){
