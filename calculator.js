@@ -21,6 +21,9 @@ const maxDigit = 10;
                 if(display.value.length > maxDigit){
                     return;
                 }
+                if(buttonValue === '0' && display.value === '0'){
+                    return;
+                }
                 display.value += buttonValue;
                 firstNum = display.value;
                 history.textContent += buttonValue;
@@ -48,6 +51,9 @@ const maxDigit = 10;
             console.log(state);
             if(isFinite(buttonValue)){
                 if(display.value.length > maxDigit){
+                    return;
+                }
+                if(buttonValue === '0' && display.value === '0'){
                     return;
                 }
                 display.value += buttonValue;
