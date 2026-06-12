@@ -8,9 +8,22 @@ let result = '';
 let operator = 0;
 let state = 0;
 const maxDigit = 10;
-    buttons.addEventListener('click',(e) => {
+
+    buttons.addEventListener('click',(e) => { 
         if(!e.target.matches("button")) return;
         buttonValue = e.target.textContent;
+        calculator(e)
+    });
+    display.addEventListener('keydown',(e)=>{
+        buttonValue = e.key;
+        e.preventDefault();
+        console.log('press');
+        calculator(e)
+    });
+    
+    
+    
+    function calculator(e){
         switch(state){
             case 0:
             clear();
@@ -24,6 +37,7 @@ const maxDigit = 10;
                 if(buttonValue === '0' && display.value === '0'){
                     return;
                 }
+                console.log('qqq');
                 display.value += buttonValue;
                 firstNum = display.value;
                 history.textContent += buttonValue;
@@ -73,7 +87,6 @@ const maxDigit = 10;
                     result = display.value;
                     history.textContent += buttonValue;
                     history.textContent += display.value;
-                    console.log('moving');
                     state = 2;
                 }
                 else if(history.textContent.includes("=")){
@@ -111,8 +124,8 @@ const maxDigit = 10;
             }
             break;
         }
-    });
-    
+    };
+
     function operate(op,fn,sn){
         num1 = parseFloat(fn);
         num2 = parseFloat(sn);
