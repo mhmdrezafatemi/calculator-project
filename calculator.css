@@ -43,6 +43,12 @@
 .numbers{
     background-color: #2e2e2e;
 }
+.numbers:hover{
+    background-color: #7c7c7c;
+}
+.operator:hover{
+    background-color: #ffb300
+}
 .history{
     grid-column: 1/5;
     color: #7c7c7c;

@@ -10,13 +10,14 @@ let state = 0;
     buttons.addEventListener('click',(e) => {
         if(!e.target.matches("button")) return;
         buttonValue = e.target.textContent;
-        clear();
         switch(state){
-        case 0:
+            case 0:
+            clear();
             if(!firstNum === ''){
                 history.textContent = firstNum;
             }
             if(isFinite(buttonValue)){
+                console.log(result);
             display.value += buttonValue;
             firstNum = display.value;
             history.textContent += buttonValue;
@@ -40,11 +41,12 @@ let state = 0;
             }
             break;
         case 1:
+            clear();
+            console.log(state);
             if(isFinite(buttonValue)){
                 display.value += buttonValue;
                 secondNum = display.value;
                 history.textContent += buttonValue;
-                console.log(state);
             }
             else if(buttonValue === "."){
                 if(secondNum ===''){return;}
@@ -63,7 +65,6 @@ let state = 0;
                 state = 2;
                 }
                 else if(history.textContent.includes("=")){
-                    console.log(result);
                 if(result === ""){return;}
                 display.value = '';
                 display.value = operate(operator,secondNum,result);
@@ -77,27 +78,26 @@ let state = 0;
             }
             break;
         case 2:
+            clear();
             console.log(state);
-            console.log(operator);
-            if(!isFinite(buttonValue)){
+            if(buttonValue === "="){
+                display.value = '';
+                history.textContent = '';
+                display.value += operate(operator,result,secondNum);
+                history.textContent = result + operator + secondNum + '=' +display.value;
+                result = display.value;
+            }
+            else if(!isFinite(buttonValue)){
                 return;
             }
-            /*else if(buttonValue === "="){
-                if(!result ===''){
-                console.log(firstNum);
-                secondNum = firstNum;
-                result = secondNum;
-                display.value += operate(operator,firstNum,secondNum);
-                }
-
-            }*/
-           else if(isFinite(buttonValue)){
+            else if(isFinite(buttonValue)){
             history.textContent ='';
             display.value = '';
             display.value += buttonValue;
             history.textContent += display.value;
             state = 0;
-           }
+            }
+            break;
         }
     });
     
