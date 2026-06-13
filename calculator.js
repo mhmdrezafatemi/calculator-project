@@ -16,17 +16,20 @@ const maxDigit = 10;
     });
     display.addEventListener('keydown',(e)=>{
         buttonValue = e.key;
+        if(buttonValue === "Backspace"){
+            buttonValue = "B";
+        }
         e.preventDefault();
-        console.log('press');
         calculator(e)
     });
-    
     
     
     function calculator(e){
         switch(state){
             case 0:
+                console.log(state);
             clear();
+            backSpace();
             if(!firstNum === ''){
                 history.textContent = firstNum;
             }
@@ -37,7 +40,6 @@ const maxDigit = 10;
                 if(buttonValue === '0' && display.value === '0'){
                     return;
                 }
-                console.log('qqq');
                 display.value += buttonValue;
                 firstNum = display.value;
                 history.textContent += buttonValue;
@@ -53,6 +55,7 @@ const maxDigit = 10;
                 return;
             }
             else if(!isFinite(buttonValue)){
+                if(buttonValue === "B"){return backSpace;}
                 if(firstNum === ''){return;}
                 operator = buttonValue;
                 history.textContent += buttonValue;
@@ -62,6 +65,7 @@ const maxDigit = 10;
             break;
         case 1:
             clear();
+            backSpace();
             console.log(state);
             if(isFinite(buttonValue)){
                 if(display.value.length > maxDigit){
@@ -104,6 +108,7 @@ const maxDigit = 10;
             break;
         case 2:
             clear();
+            backSpace();
             console.log(state);
             if(buttonValue === "="){
                 display.value = '';
@@ -148,6 +153,16 @@ const maxDigit = 10;
             display.value ='';
             firstNum = '';
             history.textContent = '';
+        }
+    }
+    function backSpace(){
+        if(buttonValue === "B"){
+            display.value = display.value.slice(0,-1);
+            history.textContent = history.textContent.slice(0,-1);
+            if(history.textContent === "="){
+                state =2;
+            }
+            state =0;
         }
     }
 display.value='';
