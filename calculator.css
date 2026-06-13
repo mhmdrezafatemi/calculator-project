@@ -1,12 +1,12 @@
-
 .calculator{
     display: grid;
-    background-color: black;
+    background-color:#071952;
     max-width: 20em;
     border-radius: 2em;
-    margin: 0px,50px,0px,50px;
+    margin:0px auto 0px auto;
     grid-template-columns: repeat(4,1fr);
     grid-template-rows: auto;
+    gap:0;
     align-items: center;
     justify-content: center;
     align-content: center;
@@ -14,12 +14,11 @@
 .buttonStyle{
     max-width:2em;
     text-align: center;
-    border-radius: 50%;
+    border-radius: 20px;
     border: none;
     height: auto;
     padding: 10px;
     margin: 10px;
-    color: white;
     font-size: 2em;
 }
 .inputStyle{
@@ -27,31 +26,29 @@
     max-width: 100%;
     margin: 10px;
     font-size: 3em;
-    background-color: black;
-    color: white;
+    background-color: #071952;
+    color: #F2F7A1;
     border: none;
     border-radius: 1em;
     cursor: none;
 }
-.inputStyle :focus{
-    outline: none;
-    border: none;
-}
 .operator{
-    background-color: #ff9200;
+    background-color: #F2F7A1;
+    color:#071952;
 }
 .numbers{
-    background-color: #2e2e2e;
+    background-color: #35A29F;
+    color:#F2F7A1;
 }
 .numbers:hover{
-    background-color: #7c7c7c;
+    background-color: #2a7e7b;
 }
 .operator:hover{
-    background-color: #ffb300
+    background-color: white;
 }
 .history{
     grid-column: 1/5;
-    color: #7c7c7c;
+    color: #2a7e7b;
     padding: 20px;
     margin: 0em;
     max-width:100%;
@@ -59,4 +56,30 @@
     overflow:scroll;
     overflow-y:hidden;
     text-overflow:ellipsis;
+}
+.bigButton{
+    max-width:6em;
+    text-align: center;
+    border-radius: 20px;
+    margin: 10px;
+    border: none;
+    height: auto;
+    padding: 10px;
+    text-align: start;
+    font-size: 2em;
+}
+.equal{
+    grid-column: 2/4;
+    text-align: center;
+}
+.backspace{
+    grid-column: 3/5;
+        text-align: center;
+}
+
+@media (max-width:700px){
+    body{
+        max-width: 20hvm;
+    }
+    
 }

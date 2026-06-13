@@ -17,7 +17,7 @@ const maxDigit = 10;
     display.addEventListener('keydown',(e)=>{
         buttonValue = e.key;
         if(buttonValue === "Backspace"){
-            buttonValue = "B";
+            buttonValue = "⟵";
         }
         e.preventDefault();
         calculator(e)
@@ -55,7 +55,7 @@ const maxDigit = 10;
                 return;
             }
             else if(!isFinite(buttonValue)){
-                if(buttonValue === "B"){return backSpace;}
+                if(buttonValue === "⟵"){return backSpace;}
                 if(firstNum === ''){return;}
                 operator = buttonValue;
                 history.textContent += buttonValue;
@@ -156,13 +156,12 @@ const maxDigit = 10;
         }
     }
     function backSpace(){
-        if(buttonValue === "B"){
+        if(buttonValue === "⟵"){
             display.value = display.value.slice(0,-1);
             history.textContent = history.textContent.slice(0,-1);
             if(history.textContent === "="){
                 state =2;
             }
-            state =0;
         }
     }
 display.value='';

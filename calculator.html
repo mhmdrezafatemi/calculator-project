@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <link rel= 'stylesheet' href="calculator.css">
+    <meta name="viewport" content="width=device-width" initial-scale="1.0">        
+
 </head>
 <body>
     <div  id = 'buttons' class="calculator">
         <p class="history"></p>
         <input type="text" id="display" class="inputStyle">
-        <button type="button" class="buttonStyle numbers" >B</button>
         <button type="button" class="buttonStyle numbers" >C</button>
+        <button type="button" class="buttonStyle numbers">.</button>
+        <button type="button" class="bigButton numbers backspace" >⟵</button>
         <button type="button" class="buttonStyle numbers" >7</button>
         <button type="button" class="buttonStyle numbers">8</button>
         <button type="button" class="buttonStyle numbers">9</button>
-        <button type="button" class="buttonStyle operator">×</button>
+        <button type="button" class="buttonStyle operator">+</button>
         <button type="button" class="buttonStyle numbers">4</button>
         <button type="button" class="buttonStyle numbers">5</button>
         <button type="button" class="buttonStyle numbers">6</button>
@@ -21,12 +24,10 @@
         <button type="button" class="buttonStyle numbers">1</button>
         <button type="button" class="buttonStyle numbers">2</button>
         <button type="button" class="buttonStyle numbers">3</button>
-        <button type="button" class="buttonStyle operator">+</button>
-        <button type="button" class="buttonStyle numbers">0</button>
-        <button type="button" class="buttonStyle numbers">.</button>
-        <button type="button" class="buttonStyle operator">=</button>
+        <button type="button" class="buttonStyle operator">×</button>
+        <button type="button" class="buttonStyle numbers zero">0</button>
+        <button type="button" class="bigButton operator equal">=</button>
         <button type="button" class="buttonStyle operator">÷</button>
-
     </div>
 
     <script src="calculator.js"></script>
